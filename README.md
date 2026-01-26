@@ -2,7 +2,7 @@
 
 ## Things to Do:
 
-ML (melodia przeszłości)
+ML 
 
 
 # data source: https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics-attrition-dataset
