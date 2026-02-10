@@ -36,14 +36,13 @@ plt.title("Employees’ Marital Status")
 
 plt.tight_layout()
 plt.show()
-
 ```
 
 **Visualization:**
 
 ![chart1](/images/chart1.png)
 
-[Click here for more details](2_Exploratory_Data_Analysis.ipynb)
+See more details in the [2_Exploratory_Data_Analysis.ipynb](2_Exploratory_Data_Analysis.ipynb) file.
 
 ### 2. Salary Distributions for the Most Popular Job Roles
 
@@ -53,7 +52,8 @@ job_roles = df["JobRole"].value_counts().head(5).index.tolist() # top 5 roles in
 df_top5 = df[df["JobRole"].isin(job_roles)] # filtering df for roles in job_roles list
 
 job_order = df_top5.groupby("JobRole")["MonthlyIncome"].median().sort_values(ascending=False).index # group by median monthly income
-
+```
+``` python
 # boxplotting
 
 sns.boxplot(data=df_top5, x="MonthlyIncome", y="JobRole", order=job_order)
@@ -68,14 +68,13 @@ plt.xlim(0, 14000) # x axis values
 ticks_x = plt.FuncFormatter(lambda y, pos: f"{int(y/1000)}K") # 14000 -> 14K
 plt.gca().xaxis.set_major_formatter(ticks_x)
 plt.show()
-
 ```
 
 **Visualization:**
 
 ![chart2](/images/chart2.png)
 
-[Click here for more details](3_Employee_Profile_Breakdown.ipynb)
+See more details in the [3_Employee_Profile_Breakdown.ipynb](3_Employee_Profile_Breakdown.ipynb) file.
 
 ## 💪 What I Learned
 
