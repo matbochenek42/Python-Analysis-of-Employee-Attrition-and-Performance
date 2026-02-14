@@ -2,7 +2,7 @@
 
 ## 🔎 Project Overview
 
-This project focuses on Python analysis of employee dataset, that includes information about employee age, attrition, education. 
+This project focuses on Python analysis of employee dataset, that includes information about employee age, attrition, education and more. 
 
 ## 📂 Data Overview
 
