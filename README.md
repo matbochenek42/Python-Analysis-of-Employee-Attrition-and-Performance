@@ -18,67 +18,43 @@ The dataset was directly imported from **Kaggle** and cleaned in the [1_Data_Cle
 
 ### 1. Gender Distribution & Employees’ Marital Status
 
-``` python
-status = df["MaritalStatus"].value_counts()
-
-sns.set_theme(style="ticks")
-
-fig, ax = plt.subplots(1, 2)
-fig.set_size_inches((10, 10))
-
-plt.subplot(1, 2, 1)
-plt.pie(gender, labels=["Male", "Female"], autopct='%1.0f%%', startangle=90)
-plt.title("Gender Distribution of Employees")
-
-plt.subplot(1, 2, 2)
-plt.pie(status, labels=["Married", "Single", "Divorced"], autopct='%1.0f%%', startangle=90)
-plt.title("Employees’ Marital Status")
-
-plt.tight_layout()
-plt.show()
-```
-
 **Visualization:**
 
 ![chart1](/images/chart1.png)
+
+**Insights:**
+
+There are more male employees than female employees in this dataset. Almost half of the employees are married, while 32% are single. Additionally, 22% of the employees are divorced. Furthermore, males and females share almost the same percentage of married employees. There are 3% more divorced men than women, and 3% more single women than men among the employees.
 
 See more details in the [2_Exploratory_Data_Analysis.ipynb](2_Exploratory_Data_Analysis.ipynb) file.
 
 ### 2. Salary Distributions for the Most Popular Job Roles
 
-``` python
-job_roles = df["JobRole"].value_counts().head(5).index.tolist() # top 5 roles in df (indexes converted to python list)
-
-df_top5 = df[df["JobRole"].isin(job_roles)] # filtering df for roles in job_roles list
-
-job_order = df_top5.groupby("JobRole")["MonthlyIncome"].median().sort_values(ascending=False).index # group by median monthly income
-```
-``` python
-# boxplotting
-
-sns.boxplot(data=df_top5, x="MonthlyIncome", y="JobRole", order=job_order)
-sns.set_theme(style='ticks')
-sns.despine()
-
-plt.title("Salary Distributions for the Most Popular Job Roles")
-plt.xlabel("Median Monthly Income")
-plt.ylabel("")
-plt.xlim(0, 14000) # x axis values
-
-ticks_x = plt.FuncFormatter(lambda y, pos: f"{int(y/1000)}K") # 14000 -> 14K
-plt.gca().xaxis.set_major_formatter(ticks_x)
-plt.show()
-```
-
 **Visualization:**
 
 ![chart2](/images/chart2.png)
 
+**Insights:**
+
+The highest median salaries among the most popular job roles in the dataset are for Healthcare Representative, Manufacturing Director, and Sales Executive (around 6-9k). These roles are associated with sales and leadership positions. The lower-paid roles are Research Scientist and Laboratory Technician.
+
 See more details in the [3_Employee_Profile_Breakdown.ipynb](3_Employee_Profile_Breakdown.ipynb) file.
+
+### 3. Education and Job Involvement Comparsion 
+
+**Visualization:**
+
+![chart3](/images/chart3.png)
+
+**Insights:**
+
+Most employees hold a Bachelor's degree, followed by a Master's degree, a college degree, and below-college education. Only a few employees have the highest degree, a Doctor. Job involvement is most commonly rated as Excellent or Good. The highest number of Low ratings is observed among employees with below-college education, however, the percentage is still relatively low. The highest number of Outstanding ratings is achieved by employees with a Doctor degree. The distribution of job involvement percentage ratings is quite similar across education levels.
+
+See more details in the [4_Employee Satisfaction_Analysis.ipynb](4_Employee_Satisfaction_Analysis.ipynb) file.
 
 ## 💪 What I Learned
 
-I learned multiple Python skills, mainly Pandas and Matplotlib skills such as: accessing data, merging dataframes, creating pivot tables, aggregation, data visualization.
+I learned multiple Python skills, mainly in Pandas, such as data access, creating pivot tables, aggregation, applying functions, and setting indexes, as well as data visualization using Matplotlib and Seaborn.
 
 ## 🖥️ Technical Details
 
